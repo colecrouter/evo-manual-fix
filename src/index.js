@@ -73,7 +73,6 @@ for (const link of extractedTextWithLocation) {
         // If our page < pageAcc, then we have found the file
         if (link.pageIndex < pageAcc) {
             fileName = file;
-            console.debug(`Found ${ file }`);
             break;
         }
 

@@ -1,0 +1,48 @@
+
+name: Upload to GitHub Pages
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  upload-to-pages:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Download service manual
+      run: |
+        curl http://norcalmotorsports.org/users/bryan/mods/EVO/tech/ServiceManuals/Evo_X_Service_Manual.zip -o manual.zip
+
+    - name: Unzip service manual
+      uses: montudor/action-zip@v1.0.0
+      with:
+        args: unzip -qq manual.zip -d extracted
+
+    - name: Copy into input
+      run: |
+        mkdir input
+        cp -r extracted/Evo\ X\ Service\ Manual/* input
+        sudo chown -R $USER input
+        sudo chown -R $USER output
+        sudo chmod -R 777 input
+        sudo chmod -R 777 output
+
+    - name: Install Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '19.x'
+      
+    - name: Build
+      run: |
+        npm install
+        npm run start
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: output
