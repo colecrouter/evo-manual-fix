@@ -1,0 +1,16 @@
+{
+  "name": "evo-manual-fix",
+  "version": "1.0.0",
+  "description": "Fix PDF links in Mitsubishi Evo X manual INDEX page",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js -build legacy"
+  },
+  "author": "Cole Crouter",
+  "license": "ISC",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^3.5.141"
+  }
+}
