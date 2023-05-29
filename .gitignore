@@ -3,3 +3,4 @@ node_modules
 input/*
 output/*
 !output/index.html
+!output/google/index.html

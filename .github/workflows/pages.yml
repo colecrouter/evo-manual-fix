@@ -41,6 +41,7 @@ jobs:
       run: |
         npm install
         npm run start
+        npm run google
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4

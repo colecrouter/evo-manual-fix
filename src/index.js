@@ -1,5 +1,5 @@
-import { copyFile, readFile, readdir, rmdir, writeFile } from 'fs/promises';
-import { PDFArray, PDFDocument, PDFName, PDFObject, PDFRef, PDFString } from 'pdf-lib';
+import { copyFile, mkdir, readFile, readdir, writeFile } from 'fs/promises';
+import { PDFArray, PDFDocument, PDFName, PDFString } from 'pdf-lib';
 import pdfjs from 'pdfjs-dist/legacy/build/pdf.js';
 
 const indexPDFBytes = await readFile('./input/INDEX.pdf');
@@ -43,6 +43,8 @@ const files = await readdir('./input/');
 
 // Keep cache of file page counts
 const cache = new Map();
+
+const docsBuild = process.argv.includes('google');
 
 for (const link of extractedTextWithLocation) {
     const page = indexPDFPages[ link.pageIndex ];
@@ -90,7 +92,7 @@ for (const link of extractedTextWithLocation) {
             A: {
                 Type: 'Action',
                 S: 'URI',
-                URI: PDFString.of(`./${ fileName }#page=${ Number(link.text.split('-')[ 1 ]) - pageOffset }`),
+                URI: PDFString.of(`${ docsBuild ? 'https://drive.google.com/viewerng/viewer?url=https://mexican-man.github.io/evo-manual-fix/google/' : './' }${ fileName }#page=${ Number(link.text.split('-')[ 1 ]) - pageOffset }`),
             }
         })
     );
@@ -100,10 +102,10 @@ for (const link of extractedTextWithLocation) {
 
 // Copy input folder to output folder
 for (const file of files) {
-    await copyFile('./input/' + file, './output/' + file)
+    await copyFile('./input/' + file, './output/' + (docsBuild ? 'google/' : '') + file)
         .catch(err => { });
 }
 
 // Save the updated PDF
 const bytes = await indexPDFDoc.save();
-await writeFile('./output/INDEX.pdf', bytes);
+await writeFile('./output/' + (docsBuild ? 'google/' : '') + 'INDEX.pdf', bytes);
