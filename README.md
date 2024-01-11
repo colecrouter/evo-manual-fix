@@ -1,12 +1,12 @@
 # Mitsubishi Lancer Evolution X 2008 Service Manual
 
-### [View the manual here](https://mexican-man.github.io/evo-manual-fix/)
+### [View the manual here](https://colecrouter.github.io/evo-manual-fix/)
 
-#### [Mobile link](https://mexican-man.github.io/evo-manual-fix/google/)
+#### [Mobile link](https://colecrouter.github.io/evo-manual-fix/google/)
 
 <br />
 
-### [Offline download](https://github.com/Mexican-Man/evo-manual-fix/releases/download/offline/PDFs.zip)
+### [Offline download](https://github.com/colecrouter/evo-manual-fix/releases/download/offline/PDFs.zip)
 
 <br />
 
