@@ -1,5 +1,7 @@
 # Mitsubishi Lancer Evolution X 2008 Service Manual
 
+Fully featured, web-safe edition of the entire manual. Made here, for your viewing pleasure. No downloads, no broken links.
+
 ### [View the manual here](https://colecrouter.github.io/evo-manual-fix/)
 
 #### [Mobile link](https://colecrouter.github.io/evo-manual-fix/google/)
